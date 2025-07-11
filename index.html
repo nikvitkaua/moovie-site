@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie DB</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700&display=swap&subset=cyrillic-ext" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.min.css">
+</head>
+<body>
+    <header class="header">
+        <div class="header__search">
+            <form action="#">
+                <input type="text" placeholder="Search">
+            </form>
+        </div>
+        <div class="header__logo">
+            <img src="icons/Logotype.svg" alt="logo">
+        </div>
+    </header>
+    <main class="promo">
+        <div class="promo__menu">
+            <nav class="promo__menu-list">
+                <ul>
+                    <li><a class="promo__menu-item promo__menu-item_active" href="#">Films</a></li>
+                    <li><a class="promo__menu-item" href="#">Serials</a></li>
+                    <li><a class="promo__menu-item" href="#">Cartoons</a></li>
+                    <li><a class="promo__menu-item" href="#">Clips</a></li>
+                    <li><a class="promo__menu-item" href="#">Trailers</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="promo__content">
+            <div class="promo__bg">
+                <div class="promo__genre">Comedy</div>
+                <div class="promo__title">The Martian</div>
+                <div class="promo__descr">THE STORY OF A MAN WHO SURVIVED ALONE ON AN ALIEN PLANET.</div>
+                <div class="promo__ratings">
+                    <span>IMDb: 8.0</span>
+                    <span>Rotten Tomatoes: 7.7</span>
+                </div>
+            </div>
+            <div class="promo__interactive">
+                <div>
+                    <div class="promo__interactive-title">WATCHED MOVIES</div>
+                    <ul class="promo__interactive-list">
+                        <li class="promo__interactive-item">LOGAN
+                            <div class="delete"></div>
+                        </li>
+                        <li class="promo__interactive-item">INJUSTICE LEAGUE
+                            <div class="delete"></div>
+                        </li>
+                        <li class="promo__interactive-item">LA-LA-LAND
+                            <div class="delete"></div>
+                        </li>
+                        <li class="promo__interactive-item">DURABILITY
+                            <div class="delete"></div>
+                        </li>
+                        <li class="promo__interactive-item">Scott Pilgrim vs. the World
+                            <div class="delete"></div>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <form class="add">
+                        <div class="promo__interactive-title">ADD NEW FILM</div>
+                        <span>Enter a movie title</span>
+                        <input class="adding__input" type="text" placeholder="What's been watched so far...?">
+                        <span>Make him a favorite?</span>
+                        <input type="checkbox">
+                        <span class="yes">Yes!</span>
+                        <button>Apply</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="promo__adv">
+            <div class="promo__adv-title">Advertising from sponsors</div>
+            <img src="img/content_1.jpg" alt="some picture">
+            <img src="img/content_2.jpg" alt="some picture">
+            <img src="img/content_3.png" alt="some picture">
+        </div>
+    </main>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
