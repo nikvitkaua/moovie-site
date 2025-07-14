@@ -16,66 +16,66 @@ const adv = document.querySelectorAll(".promo__adv img"),
     watchedFilms = document.querySelector(".promo__interactive-list"),
     addFilmForm = document.querySelector(".add"),
     addFilmInput = addFilmForm.querySelector(".adding__input"),
-    addFilmSubmit = addFilmForm.querySelector("button"),
     addFilmFavorite = addFilmForm.querySelector("[data-favorite]");
 
-adv.forEach((item) => {
-    item.remove();
-});
+const deleteAdv = (arr) => {
+    arr.forEach((item) => {
+        item.remove();
+    });
+}
 
-promoGenre.textContent = "drama";
+const makeChanges = () => {
+    promoGenre.textContent = "drama";
 
-promoBg.style.backgroundImage = "url('img/bg.jpg')";
+    promoBg.style.backgroundImage = "url('img/bg.jpg')";
+}
 
-addFilmSubmit.addEventListener("click", (e) => {
+const sortArr = (arr) => {
+    arr.sort();
+}
+
+addFilmForm.addEventListener("submit", (e) => {
     e.preventDefault();
 
     if (addFilmFavorite.checked) {
         console.log('Add to favorite')
     }
     
-    if (addFilmInput.value.length > 0) {
+    if (addFilmInput.value) {
         movieDB.movies.push(addFilmInput.value.toLowerCase());
         addFilmInput.value = "";
     }
 
-    showWatchedFilms();
+    showWatchedFilms(movieDB.movies, watchedFilms);
 });
 
+function showWatchedFilms(films, parent) {
+    parent.innerHTML = "";
 
-function showWatchedFilms() {
-    watchedFilms.innerHTML = "";
+    sortArr(films);
 
-    movieDB.movies.sort();
-
-    movieDB.movies.forEach((movieName, i) => {
+    films.forEach((movieName, i) => {
         if (movieName.length > 20) {
             movieName = movieName.slice(0, 21) + "...";
         }
 
-        watchedFilms.innerHTML += `
+        parent.innerHTML += `
             <li class="promo__interactive-item">#${i + 1} ${movieName}
                 <div class="delete"></div>
             </li>
         `;
     });
 
-    deleteMovieFromList();
-}
+    document.querySelectorAll(".delete").forEach((delBtn, i) => {
+        delBtn.addEventListener("click", () => {
+            films.splice(i, 1);
+            delBtn.parentElement.remove();
 
-showWatchedFilms();
-
-
-function deleteMovieFromList() {
-    document.querySelectorAll(".delete").forEach((delBtn) => {
-        delBtn.addEventListener("click", (e) => {
-            let item = e.target.parentElement.textContent.trim();
-            item = item.split(" ");
-            item = item.slice(1).join(" ");
-
-            movieDB.movies.splice(movieDB.movies.indexOf(item), 1);
-            
-            showWatchedFilms();
+            showWatchedFilms(films, parent);
         });
     });
 }
+
+deleteAdv(adv);
+makeChanges();
+showWatchedFilms(movieDB.movies, watchedFilms);
